@@ -2256,11 +2256,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub\\network.mvc\\network.mvc.csproj",
+      "projectUniqueName": "C:\\GitHub\\network.mvc\\network.mvc\\network.mvc.csproj",
       "projectName": "network.mvc",
-      "projectPath": "C:\\GitHub\\network.mvc\\network.mvc.csproj",
+      "projectPath": "C:\\GitHub\\network.mvc\\network.mvc\\network.mvc.csproj",
       "packagesPath": "C:\\Users\\frava\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub\\network.mvc\\obj\\",
+      "outputPath": "C:\\GitHub\\network.mvc\\network.mvc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2326,7 +2326,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

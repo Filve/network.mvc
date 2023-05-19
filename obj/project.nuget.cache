@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ilnr9JVW1Q9wB7hc6MUM5D5ntdFNp3U+zDXTlEM9Vr2W66dqRAg5JQ0gkoRlnIxviTzUvwNIooZLbyKvg1FsEg==",
+  "dgSpecHash": "rC56mn7v6gO2/E/frZ4qvpR1SVK7B1CCrkWS0pQ64iUrOo4aOd4zuslrbuVnFcrX1y5EO9kjkJDc0y2xI8b9MQ==",
   "success": true,
-  "projectFilePath": "C:\\GitHub\\network.mvc\\network.mvc.csproj",
+  "projectFilePath": "C:\\GitHub\\network.mvc\\network.mvc\\network.mvc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\frava\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\frava\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",

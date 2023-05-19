@@ -21,6 +21,18 @@ namespace network.mvc.Controllers
 
         public IActionResult Index()
         {
+            var networkAddressInterface = NetworkInterface.GetAllNetworkInterfaces();
+            var networkAddressIp = NetworkInterfaceComponent.IPv4;
+            var stream = new MemoryStream();
+            var networking = NetworkStream.Null;
+            networking = NetworkStream.Synchronized(stream);
+            var publicAddress = Address.GetPublicIPAddress();
+            var serverScanner = ServerScanner.Scan;
+            var socketExample = SocketExample.Socket;
+
+            //var ip = IPAddress.Parse();
+            var address = new SocketAddress(AddressFamily.Ipx);
+            var addressFamily = address.Family;
             return View();
         }
 

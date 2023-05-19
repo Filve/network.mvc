@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\network.mvc.props" />
+</Project>
