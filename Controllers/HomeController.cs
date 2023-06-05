@@ -22,13 +22,17 @@ namespace network.mvc.Controllers
         public IActionResult Index()
         {
             var networkAddressInterface = NetworkInterface.GetAllNetworkInterfaces();
-            var networkAddressIp = NetworkInterfaceComponent.IPv4;
+            var currentIp = GetCurrentIPAddress.GetCurrentIP();
+            var addressIp = Address.GetIpAddress();
+            var portAddressIp = GetOpenPorts.Ports(currentIp);
             var stream = new MemoryStream();
             var networking = NetworkStream.Null;
             networking = NetworkStream.Synchronized(stream);
             var publicAddress = Address.GetPublicIPAddress();
             var serverScanner = ServerScanner.Scan;
             var socketExample = SocketExample.Socket;
+            //AntiSabotage.Antisabotage(currentIp, portAddressIp);
+            DeAnon.De();
 
             //var ip = IPAddress.Parse();
             var address = new SocketAddress(AddressFamily.Ipx);

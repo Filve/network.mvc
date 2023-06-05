@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net.WebSockets;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 
@@ -9,10 +11,11 @@ namespace network.mvc.Models
 {
     public class Address
     {
-        public static void Main(string[] args)
+        public static string GetIpAddress()
         {
             string publicIPAddress = GetPublicIPAddress();
-            Console.WriteLine("L'indirizzo IP pubblico è: " + publicIPAddress);
+            NetworkChange.NetworkChangeResult();
+            return publicIPAddress;
         }
 
         public static string GetPublicIPAddress()
@@ -38,6 +41,39 @@ namespace network.mvc.Models
         }
 
     }
+
+    public class NetworkChange
+    {
+        public static void NetworkChangeResult()
+        {
+            var booleanNetowrkcheck = NetworkInterface.GetIsNetworkAvailable();
+            var find = NetworkInterface.GetAllNetworkInterfaces()[0];
+            var ipproperties = find.GetIPProperties();
+
+        }
+    }
+
+    public class GetCurrentIPAddress
+    {
+        public static string GetCurrentIP()
+        {
+            string currentIPAddress = GetLocalIPAddress();
+            return currentIPAddress;
+        }
+        static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+    }
+
 
     public class SocketExample
     {
@@ -81,16 +117,13 @@ namespace network.mvc.Models
 
     public class ServerScanner
     {
-        public static void Scan()
+        public static int Scan()
         {
             // Intervallo di porte da scannerizzare
             int startPort = 1;
             int endPort = 65535;
-
             // Indirizzo IP del target
             string targetIP = Address.GetPublicIPAddress();
-
-            Console.WriteLine("Inizio scansione server...");
 
             for (int port = startPort; port <= endPort; port++)
             {
@@ -104,7 +137,7 @@ namespace network.mvc.Models
 
                         // Connessione al server
                         socket.Connect(targetIP, port);
-                        Console.WriteLine("Porta aperta trovata: " + port);
+                        return port;
                     }
                 }
                 catch (SocketException)
@@ -113,9 +146,74 @@ namespace network.mvc.Models
                 }
             }
 
-            Console.WriteLine("Scansione completata.");
+            return 0;
         }
     }
 
+    public class GetOpenPorts
+    {
+        public static int Ports(string ipaddress)
+        {
+            string ipAddress = ipaddress; // Replace with the IP address you want to check
+            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] tcpEndPoints = properties.GetActiveTcpListeners();
+            Console.WriteLine("Open TCP ports:");
+            foreach (IPEndPoint endPoint in tcpEndPoints)
+            {
+                if (endPoint.Address.ToString() == ipAddress)
+                {
+                    return endPoint.Port;
+                }
+            }
+            IPEndPoint[] udpEndPoints = properties.GetActiveUdpListeners();
+            Console.WriteLine("\nOpen UDP ports:");
+            foreach (IPEndPoint endPoint in udpEndPoints)
+            {
+                if (endPoint.Address.ToString() == ipAddress)
+                {
+                    return endPoint.Port;
+                }
+            }
+            return 0;
+        }
+    }
+
+    public class DeAnon
+    {
+        public static void De()
+        {
+            Console.WriteLine("Starting De-Anon...");
+            string[] urls = {"http://checkip.dyndns.org/",
+                              "http://www.trackipaddress.org/",
+                                "http://chat-log.org"};
+            foreach (string url in urls)
+            {
+                var client = new WebClient();
+                try
+                {
+                    String responseBody =
+                        client.DownloadString(url);
+                    int startIndex = responseBody.IndexOf("<body>") + "<body>".Length;
+                    int endIndex = responseBody.LastIndexOf("</body>");
+                    responseBody = responseBody.Substring(startIndex, endIndex - startIndex);
+                    Console.WriteLine("\nResponse Body:");
+                    Console.WriteLine(responseBody);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\nError Occurred:");
+                    Console.WriteLine(e.Message);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+
+    public class Network
+    {
+        public Network() { }
+
+
+    }
 
 }
